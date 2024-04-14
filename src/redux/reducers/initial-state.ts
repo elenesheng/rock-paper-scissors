@@ -11,11 +11,9 @@ export const initialState: InitialStateType = {
     },
     positions: [
         { item: "", bet: 500 }
-        ],
+    ],
     playerScore: 0,
     computerScore: 0,
     isReseted: false,
-    balance: 5000,
-    bet: 500,
-    // chosenPositions: 0
+    balance: 5000
 };

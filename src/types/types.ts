@@ -26,7 +26,6 @@ export interface InitialStateType {
     computerScore: number;
     isReseted: boolean;
     balance: number;
-    bet: number;
 }
 
 export type GameState = {

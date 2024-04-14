@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import GameComponent from "./game/game.component";
+import GameComponent from "./components/game/game.component";
 import { Provider } from 'react-redux';
 import './styles/main.scss';
 
