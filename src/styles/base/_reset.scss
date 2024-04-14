@@ -1,0 +1,220 @@
+:root {
+    // h1 desktop
+    --h1-font-size: 36px;
+    --h1-font-weight: 700;
+    --h1-color: var(--color-black);
+    --h1-line-height: 40px;
+    --h1-text-transform: capitalize;
+    --h1-font-style: normal;
+
+    // h1 mobile
+    --h1-font-weight-mobile: 700;
+    --h1-font-size-mobile: 20px;
+    --h1-color-mobile: var(--color-black);
+    --h1-line-height-mobile: 28px;
+    --h1-text-transform-mobile: capitalize;
+    --h1-font-style-mobile: normal;
+
+    // h2 desktop
+    --h2-font-size: 25px;
+    --h2-font-weight: 500;
+    --h2-color: var(--primary-color);
+    --h2-line-height: 25px;
+    --h2-text-transform: uppercase;
+    --h2-font-style: normal;
+
+    // h2 mobile
+    --h2-font-size-mobile: 15px;
+    --h2-font-weight-mobile: 500;
+    --h2-color-mobile: var(--color-black);
+    --h2-line-height-mobile: 24px;
+    --h2-text-transform-mobile: capitalize;
+    --h2-font-style-mobile: normal;
+}
+
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+* {
+    position: relative;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    vertical-align: baseline;
+    font-family: inherit;
+    outline: 0;
+    text-shadow: 1px 1px 1px rgba(0, 0, 0, .004);
+    // backface-visibility: hidden;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-tap-highlight-color: transparent;
+
+    @media print {
+        /* stylelint-disable-next-line declaration-no-important */
+        background: transparent !important;
+        /* stylelint-disable-next-line declaration-no-important */
+        color: #000000 !important;
+        /* stylelint-disable-next-line declaration-no-important */
+        filter: none !important;
+        /* stylelint-disable-next-line declaration-no-important */
+        text-shadow: none !important;
+    }
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-display: swap;
+}
+
+.layer {
+    background-image: url("../../../public/rock_paper_scissors_1.png");
+    background-repeat: no-repeat;
+    background-size: 100%;
+    opacity: 0.5;
+    height: 100vh;
+    position: absolute;
+    width: 100%;
+}
+
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section,
+label,
+summary {
+    display: block;
+}
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+    table-layout: fixed;
+    margin-block-end: 14px;
+
+    @include mobile {
+        margin-block-end: 17px;
+    }
+}
+
+img {
+    width: 100%;
+}
+
+a {
+    color: var(--color-black);
+    text-decoration: inherit;
+
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+h1 {
+    color: var(--h1-color);
+    font-weight: var(--h1-font-weight);
+    font-size: var(--h1-font-size);
+    font-style: var(--h1-font-style);
+    line-height: var(--h1-line-height);
+    margin-block-end: 18px;
+    margin-block-start: 22px;
+    text-transform: var(--h1-text-transform);
+
+    @include mobile {
+        color: var(--h1-color-mobile);
+        font-size: var(--h1-font-size-mobile);
+        font-style: var(--h1-font-style-mobile);
+        font-weight: var(--h1-font-weight-mobile);
+        line-height: var(--h1-line-height-mobile);
+        margin-block-end: 21px;
+        margin-block-start: 25px;
+        text-transform: var(--h1-text-transform-mobile);
+    }
+}
+
+h2 {
+    color: var(--h2-color);
+    font-weight: var(--h2-font-weight);
+    font-size: var(--h2-font-size);
+    font-style: var(--h2-font-style);
+    line-height: var(--h2-line-height);
+    text-transform: var(--h2-text-transform);
+
+    @include mobile {
+        color: var(--h2-color-mobile);
+        font-size: var(--h2-font-size-mobile);
+        font-style: var(--h2-font-style-mobile);
+        font-weight: var(--h2-font-weight-mobile);
+        line-height: var(--h2-line-height-mobile);
+        margin-block-end: 21px;
+        margin-block-start: 25px;
+        text-transform: var(--h2-text-transform-mobile);
+    }  
+}
+
+li {
+    list-style-type: none;
+    list-style-position: inside;
+    margin-block-end: 6px;
+
+    & * {
+        color: var(--color-black);
+    }
+
+    ol & {
+        counter-increment: list;
+
+        @include mobile {
+            counter-increment: list;
+        }
+    }
+}
+
+a,
+input,
+button,
+textarea,
+select,
+details {
+    @include mobile {
+        touch-action: manipulation;
+    }
+}
+
+.mb-30 {
+    margin-block-end: 50px;
+}
+
+.mb-50 {
+    margin-block-end: 50px;
+}
+
+.mb-100 {
+    margin-block-end: 100px;
+}
+
+.mt-30 {
+    margin-block-start: 30px;
+}
+
+.mt-50 {
+    margin-block-start: 50px;
+}
+
+.mt-100 {
+    margin-block-start: 100px;
+}

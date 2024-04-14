@@ -1,0 +1,12 @@
+.header {
+    background-color: var(--color-black);
+    height: 47px;
+
+    div {
+        height: 100%;
+    }
+
+    &__item {
+        margin-inline-end: 80px;
+    }
+}

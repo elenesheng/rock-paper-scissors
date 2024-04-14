@@ -1,0 +1,28 @@
+.d-flex {
+    display: flex;
+}
+
+.d-flex-responsive {
+    display: flex;
+    flex-direction: column;
+
+    @include desktop {
+        flex-direction: row;
+    }
+}
+
+.d-flex-column {
+    flex-direction: column;
+}
+
+.justify-center {
+    justify-content: center;
+}
+
+.justify-between {
+    justify-content: space-between;
+}
+
+.align-center {
+    align-items: center;
+}
