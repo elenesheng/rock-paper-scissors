@@ -1,4 +1,3 @@
-import React from 'react';
 import styles from './header.module.scss';
 import { useSelector } from 'react-redux';
 import { GameState } from '../../types/types';
@@ -6,10 +5,10 @@ import { GameState } from '../../types/types';
 export function Header() {
     const game: any = useSelector((state: GameState) => state?.gameElement);
     const { playerScore, balance } = game;
-    const positions: any = useSelector(
-        (state: GameState) => state?.gameElement?.positions
+    const positionData: any = useSelector(
+        (state: GameState) => state?.gameElement?.positionData
     );
-    const totalBet = positions.reduce((total:any, pos:any) => total + pos.bet, 0);
+    const totalBet = positionData.positions.length? positionData.positions.reduce((total:any, pos:any) => total + pos.bet, 0): 0;
 
     return (
         <header className={styles.header}>

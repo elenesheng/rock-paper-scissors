@@ -43,16 +43,17 @@
         background-color: white;
         margin-block-end: 17px
     }
-}
 
-.minus {
-    position: absolute;
-    top: 34px;
-    right: 67px;
-}
+    &__increase {
+        position: absolute;
+        top: -20px;
+        right: -24px;
+    }
 
-.plus {
-    position: absolute;
-    top: -20px;
-    right: -24px;
+    &__decrease {
+        position: absolute;
+        top: 34px;
+        right: 67px;
+    }
+    
 }

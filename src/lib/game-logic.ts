@@ -58,7 +58,6 @@ const play = async ({
 }: PlayFunctionParams): Promise<Result | null> => {
     try {
         let gameResult: Result | null = null;
-
         for (const position of positions) {
             const pickedItem = position.item;
             const bet = position.bet;

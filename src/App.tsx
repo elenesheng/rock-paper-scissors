@@ -1,25 +1,24 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import ReactDOM from 'react-dom/client';
+import './index.css';
+import GameComponent from "./components/game/game.component";
+import { Provider } from 'react-redux';
+import './styles/main.scss';
+import { configureStore } from '@reduxjs/toolkit';
+import reducerGame from './redux/reducers/gameSlice';
 
 function App() {
+  const store = configureStore({
+    reducer: {
+      gameElement: reducerGame
+    },
+  });
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Provider store={store}>
+      <GameComponent />
+    </Provider>
   );
 }
 

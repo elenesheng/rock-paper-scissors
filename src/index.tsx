@@ -3,31 +3,14 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import GameComponent from "./components/game/game.component";
-import { Provider } from 'react-redux';
-import './styles/main.scss';
-
-// Measuring Performance (set of useful metrics that aim to capture the user experience of a web page)
-import { configureStore } from '@reduxjs/toolkit';
-
-// Redux reducers
-import reducerGame from './redux/reducers/gameSlice';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
-const store = configureStore({
-  reducer: {
-    gameElement: reducerGame
-  },
-});
-
 
 root.render(
   <React.StrictMode>
-        <Provider store={store}>
-          <GameComponent />
-    </Provider>
+      <App />
   </React.StrictMode>
 );
 

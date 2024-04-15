@@ -1,13 +1,11 @@
-import { createSlice } from '@reduxjs/toolkit';
-import { initialState } from './initial-state';
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { initialState } from "./initial-state";
+import { Position } from "../../types/types";
 
 const gameSlice = createSlice({
-    name: 'gameSlice',
+    name: "gameSlice",
     initialState,
     reducers: {
-        reset: (state = initialState, action) => {
-            state.isReseted = action.payload;
-        },
         gameStats: (state = initialState, action) => {
             state.gameResult = action.payload;
         },
@@ -20,44 +18,38 @@ const gameSlice = createSlice({
         updateBalance: (state, action) => {
             state.balance += action.payload;
         },
-        updateBet: (state, action) => {
-            state.bet += action.payload;
-        },
-        updatePosition: (state, action) => {
-            const { index, choice } = action.payload;
-
-            while (index >= state.positions.length) {
-                state.positions.push({ item: "", bet: 500 });
-            }
-        
-            state.positions[index].item = choice;
+        updatePosition: (state, action: PayloadAction<Position>) => {
+            state.positionData.positions.push(action.payload);
         },
         updatePositionBet: (state, action) => {
             const { item, betChange } = action.payload;
-            const positionIndex = state.positions.findIndex(pos => pos.item === item);
+            const positionIndex = state.positionData.positions.findIndex(
+                (pos) => pos.item === item
+            );
             if (positionIndex !== -1) {
-                state.positions[positionIndex].bet += betChange;
+                state.positionData.positions[positionIndex].bet += betChange;
             }
+        },
+        updateRound: (state = initialState, action) => {
+            state.ongoingRound = action.payload;
         },
         resetGame: (state) => {
             state.gameResult = initialState.gameResult;
-            state.positions = initialState.positions;
-            state.bet = initialState.bet;
-            state.isReseted = initialState.isReseted;
-        }
+            state.positionData = initialState.positionData;
+            state.ongoingRound = initialState.ongoingRound;
+        },
     },
 });
 
 export const {
-    reset,
     gameStats,
     incrementPlayerScore,
     incrementComputerScore,
     updateBalance,
-    updateBet,
     updatePosition,
     updatePositionBet,
-    resetGame
+    updateRound,
+    resetGame,
 } = gameSlice.actions;
 
 export default gameSlice.reducer;

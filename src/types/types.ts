@@ -6,7 +6,10 @@ export type Result = {
     winnerItem: string,
     winningBet: number;
 }
-
+export interface Position {
+    item: string;
+    bet: number;
+}
 export interface InitialStateType {
     gameResult: {
         winnerIsPlayer: boolean;
@@ -16,16 +19,13 @@ export interface InitialStateType {
         winnerItem: string;
         winningBet: number;
     };
-    positions: [
-        {
-            item: string,
-            bet: number
-        }
-    ];
+    positionData: {
+        positions: Position[];
+    };
     playerScore: number;
     computerScore: number;
-    isReseted: boolean;
     balance: number;
+    ongoingRound: boolean
 }
 
 export type GameState = {
@@ -43,12 +43,12 @@ export type Outcomes = {
 };
 
 export type PlayFunctionParams = {
-    positions: { item: string; bet: number }[];
+    positions: Position[];
 };
 
 export interface ButtonProps {
-    disabled: boolean;
     onClick: () => void;
     children: React.ReactNode;
     item: string;
+    disabled: boolean;
 }

@@ -2,29 +2,28 @@ import React from "react";
 import styles from "./button.module.scss";
 import { useDispatch, useSelector } from "react-redux";
 import { updatePositionBet } from "../../redux/reducers/gameSlice";
-import { GameState, ButtonProps } from "../../types/types";
+import { GameState, ButtonProps, Position } from "../../types/types";
+import { BET_UPDATE_AMOUNT } from "../../constants/constants";
 
-export const Button = ({ disabled, onClick, children, item }: ButtonProps) => {
+export const Button = ({ onClick, children, item, disabled }: ButtonProps) => {
     const dispatch = useDispatch();
     const balance: any = useSelector(
         (state: GameState) => state?.gameElement?.balance
     );
-    const positions: any = useSelector(
-        (state: GameState) => state?.gameElement?.positions
+    const positionData: any = useSelector(
+        (state: GameState) => state?.gameElement?.positionData.positions
     );
-    const position = positions.find((pos: any) => pos.item === item);
+    const position = positionData.find((pos: Position) => pos.item === item);
 
-    const handleBetIncrease = (e: React.MouseEvent<HTMLSpanElement>) => {
-        console.log(positions);
-        if (balance % 500 === 0) {
-            dispatch(updatePositionBet({ item, betChange: 500 }));
+    const handleBetIncrease = () => {
+        if (balance % BET_UPDATE_AMOUNT === 0) {
+            dispatch(updatePositionBet({ item, betChange: BET_UPDATE_AMOUNT }));
         }
     };
 
-    const handleBetDecrease = (e: React.MouseEvent<HTMLSpanElement>) => {
-        e.stopPropagation();
-        if (balance > 500) {
-            dispatch(updatePositionBet({ item, betChange: -500 }));
+    const handleBetDecrease = () => {
+        if (balance > BET_UPDATE_AMOUNT) {
+            dispatch(updatePositionBet({ item, betChange: -BET_UPDATE_AMOUNT }));
         }
     };
 
@@ -32,15 +31,15 @@ export const Button = ({ disabled, onClick, children, item }: ButtonProps) => {
         <button
             className={`${styles.button} ${styles[`button__${item}`]
                 } d-flex d-flex-column align-center`}
-            disabled={disabled}
             onClick={onClick}
+            disabled={disabled}
         >
             <div>
                 <span className={styles.button__betCircle}>
-                    {position ? position.bet : 500}
+                    {position?.bet ? position.bet : BET_UPDATE_AMOUNT}
                 </span>
-                <span onClick={handleBetIncrease}>+</span>
-                <span onClick={handleBetDecrease}>-</span>
+                <span onClick={handleBetDecrease} className={styles.button__decrease}>-</span>
+                <span onClick={handleBetIncrease} className={styles.button__increase}>+</span>
             </div>
             <div>{children}</div>
         </button>
