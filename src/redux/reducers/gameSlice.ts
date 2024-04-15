@@ -12,9 +12,6 @@ const gameSlice = createSlice({
         incrementPlayerScore: (state = initialState) => {
             state.playerScore += 1;
         },
-        incrementComputerScore: (state = initialState) => {
-            state.computerScore += 1;
-        },
         updateBalance: (state, action) => {
             state.balance += action.payload;
         },
@@ -44,7 +41,6 @@ const gameSlice = createSlice({
 export const {
     gameStats,
     incrementPlayerScore,
-    incrementComputerScore,
     updateBalance,
     updatePosition,
     updatePositionBet,

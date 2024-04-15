@@ -3,7 +3,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { play } from "../../lib/game-logic";
 import {
     incrementPlayerScore,
-    incrementComputerScore,
     gameStats,
     updateBalance,
     updatePosition,
@@ -64,8 +63,6 @@ const GameComponent: React.FC = () => {
                 dispatch(incrementPlayerScore());
                 dispatch(updateBalance(betMultiplier * gameResult?.winningBet));
                 setTotalWin(betMultiplier * gameResult?.winningBet);
-            } else {
-                dispatch(incrementComputerScore());
             }
 
             dispatch(gameStats({ gameResult }));
@@ -118,9 +115,8 @@ const GameComponent: React.FC = () => {
                         ))}
                     </div>
                     <button
-                        className="primary-button mt-100"
+                        className={`primary-button mt-100 ${isRoundGoing ? 'disabled' : ''}`}
                         onClick={shouldReset ? handleReset : handlePlay}
-                        disabled={isRoundGoing}
                     >
                         {shouldReset && !isRoundGoing ? "Clear" : "Play"}
                     </button>

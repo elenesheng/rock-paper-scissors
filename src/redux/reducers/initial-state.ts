@@ -11,7 +11,6 @@ export const initialState: InitialStateType = {
     },
     positionData: { positions: [] },
     playerScore: 0,
-    computerScore: 0,
     balance: 5000,
     ongoingRound: false
 };

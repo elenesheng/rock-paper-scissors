@@ -9,3 +9,8 @@
     background-color: var(--color-black);
     text-transform: uppercase;
 }
+
+.disabled {
+    pointer-events: none;
+    opacity: 0.5;
+}

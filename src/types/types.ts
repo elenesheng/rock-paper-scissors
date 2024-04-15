@@ -23,7 +23,6 @@ export interface InitialStateType {
         positions: Position[];
     };
     playerScore: number;
-    computerScore: number;
     balance: number;
     ongoingRound: boolean
 }

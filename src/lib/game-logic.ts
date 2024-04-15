@@ -1,3 +1,4 @@
+import { GAME_ITEMS } from "../constants/constants";
 import { Result } from "../types/types";
 import {
     Outcomes,
@@ -63,8 +64,7 @@ const play = async ({
             const bet = position.bet;
 
             if (!gameResult?.winnerIsPlayer && pickedItem) {
-                const items = ["scissors", "paper", "rock"];
-                const randomItem = items[Math.floor(Math.random() * items.length)];
+                const randomItem = GAME_ITEMS[Math.floor(Math.random() * GAME_ITEMS.length)];
                 const winner = await compare({
                     playerItem: pickedItem,
                     computerItem: randomItem,
