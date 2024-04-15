@@ -1,8 +1,9 @@
 import { useEffect, useState } from "react";
 import styles from "./gameHeader.module.scss";
 import { useSelector, useDispatch } from "react-redux";
-import { GameState } from "../../types/types";
-import { updateRound } from "../../redux/reducers/gameSlice";
+import { GameState } from "@/types/types";
+import { updateRound } from "@/redux/reducers/gameSlice";
+import { RESULT_DISPLAY_DELAY } from "@/constants/constants";
 
 export function GameHeader({ totalWin }: { totalWin: number }) {
     const [headerContent, setHeaderContent] = useState("Choose your positions");
@@ -40,7 +41,7 @@ export function GameHeader({ totalWin }: { totalWin: number }) {
                     setShowResult("its tie");
                 }
                 dispatch(updateRound(false));
-            }, 2000);
+            }, RESULT_DISPLAY_DELAY);
         }
     }, [gameResult]);
 

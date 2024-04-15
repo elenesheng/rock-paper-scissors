@@ -1,6 +1,12 @@
+@import '@/styles/abstract/media.scss';
+
 .header {
     background-color: var(--color-black);
-    height: 47px;
+    height: auto;
+
+    @include desktop {
+        height: 47px;
+    }
 
     div {
         height: 100%;

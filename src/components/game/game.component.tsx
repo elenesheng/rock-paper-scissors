@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { play } from "../../lib/game-logic";
+import { play } from "@/lib/game-logic";
 import {
     incrementPlayerScore,
     gameStats,
@@ -8,18 +8,19 @@ import {
     updatePosition,
     updateRound,
     resetGame
-} from "../../redux/reducers/gameSlice";
-import { Header } from "../header";
-import { Button } from "../position-buttons";
+} from "@/redux/reducers/gameSlice";
+import { Header } from "@/components/header";
+import { Button } from "@/components/position-buttons";
 import styles from "./game.module.scss";
-import { GameHeader } from "../game-heading";
-import { GameState } from "../../types/types";
+import { GameHeader } from "@/components/game-heading";
+import { GameState } from "@/types/types";
 import {
     GAME_ITEMS,
     BET_MULTIPLIER_TWO_POSITIONS,
     BET_MULTIPLIER_SINGLE_POSITION,
-    BET_UPDATE_AMOUNT
-} from "../../constants/constants";
+    BET_UPDATE_AMOUNT,
+    RESULT_DISPLAY_DELAY
+} from "@/constants/constants";
 
 const GameComponent: React.FC = () => {
     const dispatch = useDispatch();
@@ -56,13 +57,17 @@ const GameComponent: React.FC = () => {
 
             //if its tie then return bet to player
             if (!gameResult?.winnerIsComputer && !gameResult?.winnerIsPlayer) {
-                dispatch(updateBalance(gameResult?.winningBet));
+                setTimeout(() => {
+                    dispatch(updateBalance(gameResult?.winningBet));
+                }, RESULT_DISPLAY_DELAY);
             }
-
+            
             if (gameResult?.winnerIsPlayer) {
-                dispatch(incrementPlayerScore());
-                dispatch(updateBalance(betMultiplier * gameResult?.winningBet));
-                setTotalWin(betMultiplier * gameResult?.winningBet);
+                setTimeout(() => {
+                    dispatch(incrementPlayerScore());
+                    dispatch(updateBalance(betMultiplier * gameResult?.winningBet));
+                    setTotalWin(betMultiplier * gameResult?.winningBet);
+                }, RESULT_DISPLAY_DELAY);
             }
 
             dispatch(gameStats({ gameResult }));
@@ -99,7 +104,7 @@ const GameComponent: React.FC = () => {
             <div className={styles.game}>
                 <div className="d-flex d-flex-column align-center">
                     <GameHeader totalWin={totalWin} />
-                    <div className="d-flex justify-center">
+                    <div className="d-flex-responsive justify-center">
                         {GAME_ITEMS.map((item, index) => (
                             <Button
                                 key={index}
