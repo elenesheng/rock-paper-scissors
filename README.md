@@ -12,3 +12,12 @@ This application is built using React for the frontend interface, and Redux Tool
   - Betting on two positions and winning rewards you with 3 times your bet.
 - Losses are not refunded, but ties result in your bet being returned.
 - Your winnings (if any) are added to your balance after each round.
+
+# How to Run
+To run the application locally, follow these steps:
+- Clone the repository
+- Navigate to the project directory: `cd rock-paper-scissors`
+- Install dependencies: `npm install`
+- Start the development server: `npm start`
+
+Additionally, you can see it live [here](https://elene-rock-paper-scissor.vercel.app/).

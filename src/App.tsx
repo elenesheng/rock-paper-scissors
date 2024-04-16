@@ -1,4 +1,3 @@
-import './index.css';
 import GameComponent from "./components/game/game.component";
 import { Provider } from 'react-redux';
 import './styles/main.scss';
