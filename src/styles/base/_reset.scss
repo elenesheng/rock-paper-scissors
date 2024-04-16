@@ -50,38 +50,16 @@
     font-family: inherit;
     outline: 0;
     text-shadow: 1px 1px 1px rgba(0, 0, 0, .004);
-    // backface-visibility: hidden;
     text-rendering: optimizeLegibility;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     -webkit-tap-highlight-color: transparent;
-
-    @media print {
-        /* stylelint-disable-next-line declaration-no-important */
-        background: transparent !important;
-        /* stylelint-disable-next-line declaration-no-important */
-        color: #000000 !important;
-        /* stylelint-disable-next-line declaration-no-important */
-        filter: none !important;
-        /* stylelint-disable-next-line declaration-no-important */
-        text-shadow: none !important;
-    }
 }
 
 body {
     margin: 0;
     padding: 0;
     font-display: swap;
-}
-
-.layer {
-    background-image: url("../../../public/rock_paper_scissors_1.png");
-    background-repeat: no-repeat;
-    background-size: 100%;
-    opacity: 0.5;
-    height: 100vh;
-    position: absolute;
-    width: 100%;
 }
 
 article,
@@ -193,32 +171,4 @@ details {
     @include mobile {
         touch-action: manipulation;
     }
-}
-
-.mb-10 {
-    margin-block-end: 10px;
-}
-
-.mb-30 {
-    margin-block-end: 50px;
-}
-
-.mb-50 {
-    margin-block-end: 50px;
-}
-
-.mb-100 {
-    margin-block-end: 100px;
-}
-
-.mt-30 {
-    margin-block-start: 30px;
-}
-
-.mt-50 {
-    margin-block-start: 50px;
-}
-
-.mt-100 {
-    margin-block-start: 100px;
 }

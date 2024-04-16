@@ -3,4 +3,30 @@
 @import './base/button';
 @import './base/flexbox';
 
+.mb-10 {
+    margin-block-end: 10px;
+}
 
+.mb-30 {
+    margin-block-end: 50px;
+}
+
+.mb-50 {
+    margin-block-end: 50px;
+}
+
+.mb-100 {
+    margin-block-end: 100px;
+}
+
+.mt-30 {
+    margin-block-start: 30px;
+}
+
+.mt-50 {
+    margin-block-start: 50px;
+}
+
+.mt-100 {
+    margin-block-start: 100px;
+}

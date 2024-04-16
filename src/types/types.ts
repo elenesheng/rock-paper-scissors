@@ -6,10 +6,12 @@ export type Result = {
     winnerItem: string,
     winningBet: number;
 }
+
 export interface Position {
     item: string;
     bet: number;
 }
+
 export interface InitialStateType {
     gameResult: {
         winnerIsPlayer: boolean;

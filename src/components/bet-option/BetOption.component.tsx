@@ -21,7 +21,7 @@ export const BetOption = ({ onClick, children, item, disabled }: ButtonProps) =>
     };
 
     const handleBetDecrease = () => {
-        if (balance > BET_UPDATE_AMOUNT) {
+        if (balance > BET_UPDATE_AMOUNT && position?.bet > BET_UPDATE_AMOUNT) {
             dispatch(updatePositionBet({ item, betChange: -BET_UPDATE_AMOUNT }));
         }
     };
