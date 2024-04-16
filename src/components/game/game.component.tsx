@@ -10,14 +10,12 @@ import {
     resetGame
 } from "@/redux/reducers/gameSlice";
 import { Header } from "@/components/header";
-import { Button } from "@/components/position-buttons";
+import { BetOption } from "@/components/bet-option";
 import styles from "./game.module.scss";
-import { GameHeader } from "@/components/game-heading";
+import { GameResultDisplay } from "@/components/game-result";
 import { GameState } from "@/types/types";
 import {
     GAME_ITEMS,
-    BET_MULTIPLIER_TWO_POSITIONS,
-    BET_MULTIPLIER_SINGLE_POSITION,
     BET_UPDATE_AMOUNT,
     RESULT_DISPLAY_DELAY
 } from "@/constants/constants";
@@ -26,7 +24,6 @@ const GameComponent: React.FC = () => {
     const dispatch = useDispatch();
     const [chosenButtons, setChosenButtons] = useState<string[]>([]);
     const [shouldReset, setShouldReset] = useState(false);
-    const [totalWin, setTotalWin] = useState(0);
     const balance: any = useSelector(
         (state: GameState) => state?.gameElement?.balance
     );
@@ -61,7 +58,6 @@ const GameComponent: React.FC = () => {
                 setTimeout(() => {
                     dispatch(incrementPlayerScore());
                     dispatch(updateBalance(betMultiplier * gameResult?.winningBet));
-                    setTotalWin(betMultiplier * gameResult?.winningBet);
                 }, RESULT_DISPLAY_DELAY);
             }
 
@@ -98,10 +94,10 @@ const GameComponent: React.FC = () => {
             <Header />
             <div className={styles.game}>
                 <div className="d-flex d-flex-column align-center">
-                    <GameHeader />
+                    <GameResultDisplay />
                     <div className="d-flex-responsive justify-center">
                         {GAME_ITEMS.map((item, index) => (
-                            <Button
+                            <BetOption
                                 key={index}
                                 disabled={isButtonDisabled(item)}
                                 onClick={() => {
@@ -111,7 +107,7 @@ const GameComponent: React.FC = () => {
                                 item={item}
                             >
                                 {item}
-                            </Button>
+                            </BetOption>
                         ))}
                     </div>
                     <button

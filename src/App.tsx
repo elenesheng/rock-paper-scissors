@@ -1,6 +1,4 @@
-import React from 'react';
 import './App.css';
-import ReactDOM from 'react-dom/client';
 import './index.css';
 import GameComponent from "./components/game/game.component";
 import { Provider } from 'react-redux';
