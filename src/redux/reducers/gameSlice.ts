@@ -1,6 +1,6 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { initialState } from "./initial-state";
-import { Position } from "../../types/types";
+import { Position } from "@/types/types";
 
 const gameSlice = createSlice({
     name: "gameSlice",

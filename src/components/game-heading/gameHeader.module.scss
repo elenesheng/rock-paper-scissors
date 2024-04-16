@@ -1,4 +1,12 @@
+@import '@/styles/abstract/media.scss';
+
 .gameHeader {
+    margin-block-end: 40px;
+
+    @include desktop {
+        margin-block-end: 100px;
+    }
+
     &__headingGreen {
         color: var(--color-light-green);
         margin-block-end: 10px;

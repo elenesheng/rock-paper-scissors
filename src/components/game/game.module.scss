@@ -1,6 +1,13 @@
+@import '@/styles/abstract/media.scss';
+
 .game {
     background: linear-gradient(to bottom, #333333, #000000);
     background-repeat: no-repeat;
-    height: 100vh;
-    padding: 150px 0;
+    height: 100%;
+    padding: 50px 0;
+
+    @include desktop {
+        padding: 100px 0;
+        height: 100vh;
+    }
 }

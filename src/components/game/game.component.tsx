@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { play } from "@/lib/game-logic";
+import { play, calculateBetMultiplier } from "@/lib/game-logic";
 import {
     incrementPlayerScore,
     gameStats,
@@ -48,12 +48,7 @@ const GameComponent: React.FC = () => {
             const gameResult = await play({ positions: positionsData.positions });
 
             //if user chose two positions bet should multiplied to 3, else 14
-            const betMultiplier =
-                gameResult?.winnerIsPlayer && positionsData.positions.length > 1
-                    ? BET_MULTIPLIER_TWO_POSITIONS
-                    : gameResult?.winnerIsPlayer && positionsData.positions.length === 1
-                        ? BET_MULTIPLIER_SINGLE_POSITION
-                        : 0;
+            const betMultiplier = calculateBetMultiplier(gameResult, positionsData);
 
             //if its tie then return bet to player
             if (!gameResult?.winnerIsComputer && !gameResult?.winnerIsPlayer) {
@@ -70,7 +65,7 @@ const GameComponent: React.FC = () => {
                 }, RESULT_DISPLAY_DELAY);
             }
 
-            dispatch(gameStats({ gameResult }));
+            dispatch(gameStats(gameResult));
         } catch (error) {
             console.error("Error playing the game:", error);
         }
@@ -103,7 +98,7 @@ const GameComponent: React.FC = () => {
             <Header />
             <div className={styles.game}>
                 <div className="d-flex d-flex-column align-center">
-                    <GameHeader totalWin={totalWin} />
+                    <GameHeader />
                     <div className="d-flex-responsive justify-center">
                         {GAME_ITEMS.map((item, index) => (
                             <Button

@@ -1,10 +1,14 @@
-import { GAME_ITEMS } from "../constants/constants";
-import { Result } from "../types/types";
+import {
+    GAME_ITEMS,
+    BET_MULTIPLIER_TWO_POSITIONS,
+    BET_MULTIPLIER_SINGLE_POSITION,
+} from "@/constants/constants";
+import { Result } from "@/types/types";
 import {
     Outcomes,
     CompareFunctionParams,
     PlayFunctionParams,
-} from "../types/types";
+} from "@/types/types";
 
 const compare = async ({
     computerItem,
@@ -64,7 +68,8 @@ const play = async ({
             const bet = position.bet;
 
             if (!gameResult?.winnerIsPlayer && pickedItem) {
-                const randomItem = GAME_ITEMS[Math.floor(Math.random() * GAME_ITEMS.length)];
+                const randomItem =
+                    GAME_ITEMS[Math.floor(Math.random() * GAME_ITEMS.length)];
                 const winner = await compare({
                     playerItem: pickedItem,
                     computerItem: randomItem,
@@ -81,4 +86,19 @@ const play = async ({
     }
 };
 
-export { play };
+function calculateBetMultiplier(
+    gameResult: Result | null,
+    positionsData: PlayFunctionParams
+) {
+    if (gameResult && gameResult?.winnerIsPlayer) {
+        if (positionsData.positions.length > 1) {
+            return BET_MULTIPLIER_TWO_POSITIONS;
+        } else if (positionsData.positions.length === 1) {
+            return BET_MULTIPLIER_SINGLE_POSITION;
+        }
+    }
+
+    return 0;
+}
+
+export { play, calculateBetMultiplier };

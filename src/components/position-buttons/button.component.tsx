@@ -1,8 +1,7 @@
-import React from "react";
 import styles from "./button.module.scss";
 import { useDispatch, useSelector } from "react-redux";
 import { updatePositionBet } from "@/redux/reducers/gameSlice";
-import { GameState, ButtonProps, Position } from "../../types/types";
+import { GameState, ButtonProps, Position } from "@/types/types";
 import { BET_UPDATE_AMOUNT } from "@/constants/constants";
 
 export const Button = ({ onClick, children, item, disabled }: ButtonProps) => {
